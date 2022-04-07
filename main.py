@@ -19,7 +19,9 @@
 
 carType = 0
 
+
 def getcartype():
+    global carType
     carType = int(input("Car type = "))
     if carType == 1:
         return "Gas or hybrid"
@@ -28,6 +30,7 @@ def getcartype():
     else:
         print("Please enter either a 1 or a 0.")
         getcartype()
+
 
 while True:
     print("This script calculates the gallons used per year and cost of gas per year for a typical Oregon driver.")
@@ -43,10 +46,13 @@ while True:
     elif int(carType) == 0:
         print("Please enter your car's gas mileage equivalent in MPGe (do not include units):")
         mileage = float(input("Gas mileage equivalent = "))
-        yearPerGal = mileage / 14032
         mpgEq = " equivalent "
         fuelType = "electricity"
-
+    else:
+        # This section unnecessary for proper functioning of code, but removes errors
+        mileage = ""
+        mpgEq = ""
+        fuelType = ""
 
     yearPerGal = mileage / 14032
     galPerYear = 1 / yearPerGal
