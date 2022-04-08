@@ -19,10 +19,27 @@
 
 carType = 0
 
+###############################################################################
+# Function: getcartype
+# Description: Sets global carType to 1 or 0 depending on the user's input.
+#              This function is necessary in order to loop until a valid input
+#              is given.
+# Parameters: integer input of 1 or 0
+# Return values: "Gas or hybrid", "Electric only", "Please enter either a 1 or a 0."
+# Pre-Conditions: Car type not known
+# Post-Conditions: Car type known
+###############################################################################
+
 
 def getcartype():
     global carType
-    carType = int(input("Car type = "))
+    carType = input("Car type = ")
+    if carType.isnumeric():
+        carType = int(carType)
+    else:
+        print("Please enter either a 1 or a 0.")
+        getcartype()
+
     if carType == 1:
         return "Gas or hybrid"
     elif carType == 0:
@@ -49,7 +66,7 @@ while True:
         mpgEq = " equivalent "
         fuelType = "electricity"
     else:
-        # This section unnecessary for proper functioning of code, but removes errors
+        # This section unnecessary for proper functioning of code, but removes "variable may be undefined" error
         mileage = ""
         mpgEq = ""
         fuelType = ""
